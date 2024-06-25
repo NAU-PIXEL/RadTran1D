@@ -243,8 +243,8 @@ PROGRAM main
       t_sounding = 2 
       polar = .TRUE.
       p_scale = 1
-      co2ice = 0                !c-mm  XXXXXX  Keep here or move up?
-      h2oice = 0
+      ! co2ice = 0                !c-mm  XXXXXX  Keep here or move up?
+      ! h2oice = 0
       fys_factor = 1
       reg_t_ref = 120.
       reg_t_iso = 120.
@@ -275,7 +275,7 @@ PROGRAM main
       p_qg = -1
       ra_kdm_taulayer_calculation = .FALSE.
       ra_kdm_clearsky_calculation = .FALSE.
-      nlte_physics = 0.0
+      nlte_physics = 41
       sw_correct = .FALSE.
       diurnavg= .false.
       chi_ls1_in = 0.
