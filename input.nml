@@ -1,0 +1,52 @@
+
+&layer_data_nml
+n_layers_nml=12,
+/
+
+&band_nml
+use_band_ir_nml(1:7)=.true.,.true.,.true.,.true.,.true.,.true.,.true.,
+use_band_vis_nml(1:7)=.true.,.true.,.true.,.true.,.true.,.true.,.true.,
+/
+
+&data_nml
+albedo_nml = 0.20,
+xlat_nml = 0.0,
+l_s_input_nml = 0.0,
+time_of_day_nml = 12.0,
+emiss_nml = 1.0,
+t3d_nml = 249.5,247.,245.,242.,237.,232.,223.,213.,205.,196.,186.,179.,
+tf3d_nml = 249.,246.,244.,240.,235.,227.,219.,209.,201.,192.,182.,176.,
+tsk_nml = 250.,
+p3d_nml = 650., 550., 450., 350., 250., 150., 70., 30., 15., 7., 3., 1.5,
+pf3d_nml = 600., 500., 400., 300., 200., 100., 50., 20., 10., 5., 2., 1.,
+psfc_nml = 672.,
+include_dust_nml = .false.,
+include_water_ice_nml = .false.,
+include_water_vap_nml = .false.,
+include_co2_ice_nml = .false.,
+opt_depth_nml = 1.0
+opt_depth_ice_nml = 0.05
+dust_opacity_option_nml = 1
+ice_opacity_option_nml = 2
+dtau_dust_nml = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+ndust_nml = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+reff_dust_nml = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+dtau_ice_nml = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+nice_nml = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+reff_ice_nml = 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+cdod_scale_nml = 1.0,
+/
+
+&orbital_nml
+obliquity_nml = 25.19,
+eccentricity_nml = 0.09341233,
+zero_date_nml = 488.7045
+semimajoraxis_nml = 1.52366231,
+equinox_fraction_nml = 0.2695,
+/
+
+&physics_params_nml
+mp_physics_nml = 42
+mp_physics_du_nml = 43
+ra_du_physics_nml = 40
+/
