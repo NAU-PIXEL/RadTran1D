@@ -28,20 +28,25 @@ LWORDSIZE = 4
 MAX_DOMAINS = 1
 
 arch=-DIWORDSIZE=$(IWORDSIZE) -DDWORDSIZE=$(DWORDSIZE) -DRWORDSIZE=$(RWORDSIZE) -DLWORDSIZE=$(LWORDSIZE)
-defines=-DWRF_MARS -DWRF_PLANET -DMAX_DOMAINS_F=$(MAX_DOMAINS) -g -O0
+defines=-DWRF_MARS -DWRF_PLANET -DMAX_DOMAINS_F=$(MAX_DOMAINS) -g -O0 
 
-NCINC=-I/nasa/netcdf/4.4.1.1_serial/include
-NCLIB=-L/nasa/netcdf/4.4.1.1_serial/lib
-compile=-free $(NCINC) $(defines) $(arch)
+# NCINC=-I/nasa/netcdf/4.4.1.1_serial/include
+# NCLIB=-L/nasa/netcdf/4.4.1.1_serial/lib
+
+NCINC=-I/usr/include
+NCLIB=-L/usr/lib
+compile=-ffree-form -ffree-line-length-0 -cpp $(NCINC) $(defines) $(arch) 
 link=$(NCLIB)
+# compiler=/opt/intel/oneapi/compiler/latest/bin/ifort -diag-disable=10448
+compiler=gfortran
 
 AR      = ar
 
-main: main.F $(OBJS)
-	ifort $(compile) $(link) $^ -o main
+main: main.f90 $(OBJS)
+	$(compiler) $(compile) $(link) $^ -o main
 
-%.o : %.F
-	ifort -c $(compile) $^
+%.o : %.f90
+	$(compiler) -c $(compile) $^
 
 module_planet_utilities.o : module_wrf_error.o module_nrutils.o module_model_constants.o module_mars24.o
 

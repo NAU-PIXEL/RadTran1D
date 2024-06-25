@@ -24,8 +24,8 @@ CONTAINS
 
       
 !----------------------------------------------------------------
-      REAL FUNCTION get_julian(ls,eccentricity,  &
-      equinox_fraction,zero_date) RESULT (julian)
+      REAL FUNCTION get_julian(ls,eccentricity_local,  &
+      equinox_fraction_local,zero_date_local) RESULT (julian)
 !----------------------------------------------------------------
 !
 ! Calculate Julian day for a given Ls.
@@ -45,13 +45,13 @@ CONTAINS
 
 !   Input/Ouptut variables
       REAL, INTENT(IN) :: ls, & ! Day of the year, sols
-                eccentricity, &
-            equinox_fraction, &
-                   zero_date
+                eccentricity_local, &
+            equinox_fraction_local, &
+                   zero_date_local
 
 !   Parameter variables
     REAL(KIND (0d0)), PARAMETER :: SMALL_VALUE = 1.D-6
-    INTEGER, PARAMETER :: PLANET_YEAR = 669
+    INTEGER, PARAMETER :: PLANET_YEAR_LOCAL = 669
       
 !   Local Variables
     REAL(KIND (0d0)) :: pi
@@ -61,19 +61,19 @@ CONTAINS
 
     PI=ACOS(-1.d0)
 
-    deleqn = equinox_fraction * REAL(PLANET_YEAR) 
+    deleqn = equinox_fraction_local * REAL(PLANET_YEAR_LOCAL) 
 
-    er = SQRT( (1.d0+eccentricity)/(1.d0-eccentricity) )
+    er = SQRT( (1.d0+eccentricity_local)/(1.d0-eccentricity_local) )
 
     !  qq is the mean anomaly
-    qq = 2.d0 * (pi * deleqn / REAL(PLANET_YEAR))
+    qq = 2.d0 * (pi * deleqn / REAL(PLANET_YEAR_LOCAL))
 
     !  determine true anomaly at equinox:  eq
     !  Iteration for eq
     e = 1.d0
     cd0 = 1.d0
     DO WHILE (cd0 > SMALL_VALUE)
-       ep = e - (e-eccentricity*SIN(e)-qq)/(1.d0-eccentricity*COS(e))
+       ep = e - (e-eccentricity_local*SIN(e)-qq)/(1.d0-eccentricity_local*COS(e))
        cd0 = ABS(e-ep)
        e = ep
     END DO
@@ -84,14 +84,14 @@ CONTAINS
     ! e is the eccentric anomaly
     e = 2.0*atan((tan(w*0.5))/er)
 
-    em = e - eccentricity*sin(e)
+    em = e - eccentricity_local*sin(e)
 
-    dp_date = em * planet_year / (2.0 * pi)
+    dp_date = em * PLANET_YEAR_LOCAL / (2.0 * pi)
 
-    ajulian = dp_date + zero_date
+    ajulian = dp_date + zero_date_local
 
-    if(ajulian .lt. 0)           ajulian = ajulian + planet_year
-    if(ajulian .gt. planet_year) ajulian = ajulian - planet_year
+    if(ajulian .lt. 0)           ajulian = ajulian + PLANET_YEAR_LOCAL
+    if(ajulian .gt. PLANET_YEAR_LOCAL) ajulian = ajulian - PLANET_YEAR_LOCAL
     
     julian = REAL(ajulian)
    

@@ -186,7 +186,8 @@
                p2duv (i,k) = REAL((pf2duv(i,k+1)+pf2duv(i,k))/2.,KIND(0.d0)) ! intent: centre of fake layer at half mass of layer
                ! not going to define dz2d at the top - Leonard's Law: if there's an attempt to use it, you're already someplace you shouldn't be
              ELSE
-               WRITE ( wrf_err_message ,*) 'ERROR: KDM has not been setup to use other than one fake uv layer ',number_of_fake_layers_uv 
+               WRITE ( wrf_err_message ,*) 'ERROR: KDM has not been setup to use other than one fake uv layer ',& 
+               number_of_fake_layers_uv 
                CALL wrf_error_fatal ( wrf_err_message )
             ENDIF
 

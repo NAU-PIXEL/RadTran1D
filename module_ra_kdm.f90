@@ -1236,7 +1236,8 @@ ENDIF ! end of the local vis check
               CALL wrf_message ( TRIM( wrf_err_message ) )
             endif
             if(gas_mix_fatal) then
-              WRITE ( wrf_err_message ,*) 'Water vapor mixing ratio greater than ',kval_mix_max,' max at i,k,j: ',i_at_max,k_at_max,j
+              WRITE ( wrf_err_message ,*) 'Water vapor mixing ratio greater than ',& 
+              kval_mix_max,' max at i,k,j: ',i_at_max,k_at_max,j
               CALL wrf_error_fatal ( wrf_err_message )
             endif
           ENDIF

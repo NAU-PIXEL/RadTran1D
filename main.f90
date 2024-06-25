@@ -275,9 +275,9 @@ PROGRAM main
       p_qg = -1
       ra_kdm_taulayer_calculation = .FALSE.
       ra_kdm_clearsky_calculation = .FALSE.
-      nlte_physics = .FALSE.
+      nlte_physics = 0.0
       sw_correct = .FALSE.
-      diurnavg=0.0
+      diurnavg= .false.
       chi_ls1_in = 0.
       chi_ls2_in = 360.
       chi_lat1_in = -90.

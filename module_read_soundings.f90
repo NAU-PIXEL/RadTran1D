@@ -1085,7 +1085,8 @@ real, dimension(nz_data) :: z_data, p_data, T_data
 
 !== Executable statements:
 
-  write(wrf_err_message,*) "Don't use this for p, T profiles, use HASI data instead. This has data gap 45-75 km and bad data point in H2" 
+  write(wrf_err_message,*) "Don't use this for p, T profiles, use HASI data &
+  &instead. This has data gap 45-75 km and bad data point in H2" 
   CALL wrf_error_fatal ( TRIM( wrf_err_message ) )
   !!! Rewrite this subroutine to only use for CH4, H2 profiles !!!
 
